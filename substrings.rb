@@ -7,7 +7,10 @@ def substrings(string, dictionary)
   dictionary.each do |word|
     # storing the result of each word matched
     result = substring.match(word)
-    puts result.class
+    matched_array = []
+    matched_array.push(result)
+    matched_array.compact!
+    puts matched_array
   end
 end
 
