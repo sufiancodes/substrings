@@ -1,7 +1,7 @@
 dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
 
-def count_times_sub_str_match(str, substr)
-  # this method counts how many times a given substring match
+def count_times_sub_str_appear(str, substr)
+  # substring matching
   str.scan(/(?=#{substr})/).count
 end
 
@@ -9,18 +9,25 @@ end
 def substrings(string, dictionary)
   # taking string and converting all to downcase
   given_string = string.downcase
-  # loop over each word in the dictionary
   array = []
+  hash = {}
+  # looping over whole dictionary 
   dictionary.each do |word|
+    # checking if current word match
     given_string.match(word)
+    # extract actual string matched
     result = $&
+    # push it in array
     array.push(result)
-    array.compact!
+    # remove nil values
+    array.compact!  
   end
-  p array
+  # loop over array
   array.each do |word|
-        count_times_sub_str_match(given_string, word)
+    # add each element in array as key its occurrence as value
+    hash[word] = count_times_sub_str_appear(given_string, word)
   end
+  puts hash
 end
 
 
